@@ -1413,12 +1413,8 @@ M.launch = function () {
         func: function () {
           PlaySound("snd/toneTick.mp3");
           /*if (M.freeze){return false;}*/
-          if (Game.keys[16] && Game.keys[17])
-            M.harvestAll(
-              0,
-              1,
-              1
-            ); //ctrl & shift, harvest only mature non-immortal plants
+          if (Game.keys[16] && Game.keys[17]) M.harvestAll(0, 1, 1);
+          //ctrl & shift, harvest only mature non-immortal plants
           else M.harvestAll();
         },
       },

@@ -337,7 +337,8 @@ var shortenNumber = function (val) {
 var SimpleBeautify = function (val) {
   var str = val.toString();
   var str2 = "";
-  for (var i in str) { //add commas
+  for (var i in str) {
+    //add commas
     if ((str.length - i) % 3 == 0 && i > 0) str2 += ",";
     str2 += str[i];
   }
@@ -3995,7 +3996,8 @@ Game.Launch = function () {
       if (type == 3)
         str +=
           "\n\nBuildings : amount, bought, cookies produced, level, minigame data";
-      for (var i in Game.Objects) { //buildings
+      for (var i in Game.Objects) {
+        //buildings
         var me = Game.Objects[i];
         if (type == 3) str += "\n	" + me.name + " : ";
         if (me.vanilla) {
@@ -4018,7 +4020,8 @@ Game.Launch = function () {
       if (type == 3)
         str += "\n\nPacked upgrades bitfield (unlocked and bought)\n	";
       var toCompress = [];
-      for (var i in Game.UpgradesById) { //upgrades
+      for (var i in Game.UpgradesById) {
+        //upgrades
         var me = Game.UpgradesById[i];
         if (me.vanilla)
           toCompress.push(Math.min(me.unlocked, 1), Math.min(me.bought, 1));
@@ -4030,7 +4033,8 @@ Game.Launch = function () {
       str += "|";
       if (type == 3) str += "\n\nPacked achievements bitfield (won)\n	";
       var toCompress = [];
-      for (var i in Game.AchievementsById) { //achievements
+      for (var i in Game.AchievementsById) {
+        //achievements
         var me = Game.AchievementsById[i];
         if (me.vanilla) toCompress.push(Math.min(me.won));
       }
@@ -4161,9 +4165,8 @@ Game.Launch = function () {
         } //legacy system
         else {
           if (document.cookie.indexOf(Game.SaveTo) >= 0)
-            str = unescape(
-              document.cookie.split(Game.SaveTo + "=")[1]
-            ); //get cookie here
+            str = unescape(document.cookie.split(Game.SaveTo + "=")[1]);
+          //get cookie here
           else return false;
         }
       }
@@ -6210,7 +6213,8 @@ Game.Launch = function () {
           if (me.posY > Game.heavenlyBounds.bottom)
             Game.heavenlyBounds.bottom = me.posY;
         }
-        for (var ii in me.parents) { //create pulsing links
+        for (var ii in me.parents) {
+          //create pulsing links
           if (me.parents[ii] != -1 && (me.canBePurchased || ghosted)) {
             var origX = 0;
             var origY = 0;
@@ -8995,22 +8999,20 @@ Game.Launch = function () {
           str = loc(
             "%1 day",
             LBeautify(Math.floor(time / (Game.fps * 60 * 60 * 24)))
-          ); //Beautify(Math.floor(time/(Game.fps*60*60*24)))+' days';
+          );
+        //Beautify(Math.floor(time/(Game.fps*60*60*24)))+' days';
         else if (time >= Game.fps * 60 * 60 && detail < 3)
           str = loc(
             "%1 hour",
             LBeautify(Math.floor(time / (Game.fps * 60 * 60)))
-          ); //Beautify(Math.floor(time/(Game.fps*60*60)))+' hours';
+          );
+        //Beautify(Math.floor(time/(Game.fps*60*60)))+' hours';
         else if (time >= Game.fps * 60 && detail < 4)
-          str = loc(
-            "%1 minute",
-            LBeautify(Math.floor(time / (Game.fps * 60)))
-          ); //Beautify(Math.floor(time/(Game.fps*60)))+' minutes';
+          str = loc("%1 minute", LBeautify(Math.floor(time / (Game.fps * 60))));
+        //Beautify(Math.floor(time/(Game.fps*60)))+' minutes';
         else if (time >= Game.fps && detail < 5)
-          str = loc(
-            "%1 second",
-            LBeautify(Math.floor(time / Game.fps))
-          ); //Beautify(Math.floor(time/(Game.fps)))+' seconds';
+          str = loc("%1 second", LBeautify(Math.floor(time / Game.fps)));
+        //Beautify(Math.floor(time/(Game.fps)))+' seconds';
         else str = loc("less than 1 second");
       }
       return str;
@@ -9582,7 +9584,8 @@ Game.Launch = function () {
         var achievementsTotal = 0;
 
         var list = [];
-        for (var i in Game.Achievements) { //sort the achievements
+        for (var i in Game.Achievements) {
+          //sort the achievements
           list.push(Game.Achievements[i]);
         }
         var sortMap = function (a, b) {
@@ -11710,11 +11713,10 @@ Game.Launch = function () {
           var me = choose(fortunes);
           Game.TickerEffect = { type: "fortune", sub: me };
 
-          if (me == "fortuneGC")
-            me = loc(
-              "Today is your lucky day!"
-            ); /*<br>Click here for a golden cookie.';*/
-          else if (me == "fortuneCPS") {
+          if (me == "fortuneGC") me = loc("Today is your lucky day!");
+          /*<br>Click here for a golden cookie.';*/ else if (
+            me == "fortuneCPS"
+          ) {
             Math.seedrandom(Game.seed + "-fortune");
             me =
               loc("Your lucky numbers are:") +
@@ -17815,7 +17817,8 @@ Game.Launch = function () {
       }
       return num;
     };
-    for (var i in Game.eggDrops) { //scale egg prices to how many eggs you have
+    for (var i in Game.eggDrops) {
+      //scale egg prices to how many eggs you have
       Game.Upgrades[Game.eggDrops[i]].priceFunc = function () {
         return Math.pow(2, Game.GetHowManyEggs()) * 999;
       };
@@ -20416,7 +20419,8 @@ Game.Launch = function () {
       "Ichor syrup",
       "Wheat slims",
     ];
-    for (var i in gardenDrops) { //scale by CpS
+    for (var i in gardenDrops) {
+      //scale by CpS
       var it = Game.Upgrades[gardenDrops[i]];
       it.priceFunc = (function (cost) {
         return function () {
@@ -27797,7 +27801,8 @@ Game.Launch = function () {
         buff.maxTime = buff.time;
       } //create new buff
       else {
-        for (var i in obj) { //paste parameters onto buff
+        for (var i in obj) {
+          //paste parameters onto buff
           buff[i] = obj[i];
         }
         buff.maxTime = buff.time;
@@ -29026,7 +29031,8 @@ Game.Launch = function () {
         Game.santaLevels[i] = loc(Game.santaLevels[i]);
       }
     }
-    for (var i in Game.santaDrops) { //scale christmas upgrade prices with santa level
+    for (var i in Game.santaDrops) {
+      //scale christmas upgrade prices with santa level
       Game.Upgrades[Game.santaDrops[i]].priceFunc = function () {
         return Math.pow(3, Game.santaLevel) * 2525;
       };

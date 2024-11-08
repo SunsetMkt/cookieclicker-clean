@@ -777,10 +777,8 @@ var LaunchDungeons = function () {
           if (1 == 1) {
             //this.AI!='static')
             if (this.AI == "flee")
-              this.Flee(
-                this.dungeon.heroEntity.x,
-                this.dungeon.heroEntity.y
-              ); //flee from the player
+              this.Flee(this.dungeon.heroEntity.x, this.dungeon.heroEntity.y);
+            //flee from the player
             else {
               this.GoTo(this.dungeon.heroEntity.x, this.dungeon.heroEntity.y); //track the player
               if (this.stuck || this.targets.length == []) this.Wander(); //can't reach the player? walk around randomly
@@ -971,7 +969,8 @@ var LaunchDungeons = function () {
 				}
 			}*/
 
-      for (var i in M.doors) { //place door entities on door positions
+      for (var i in M.doors) {
+        //place door entities on door positions
         //M.data[M.doors[i][0]][M.doors[i][1]][0]=TILE_FLOOR_EDGE;
         this.AddEntity("destructible", "door", M.doors[i][0], M.doors[i][1]);
       }
