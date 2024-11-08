@@ -17367,6 +17367,10 @@
     var importField = byId("importField");
 
     $("#importButton").on("click", function () {
+      if (!importField.value) {
+        // Get CookieClickerGame from localStorage
+        importField.value = localStorage.getItem("CookieClickerGame");
+      }
       Game.importSave(importField.value);
     });
 
