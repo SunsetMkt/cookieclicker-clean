@@ -17366,6 +17366,11 @@
 
     var importField = byId("importField");
 
+    $("#loadButton").on("click", function () {
+      importField.value = localStorage.getItem("CookieClickerGame");
+      Game.importSave(importField.value);
+    });
+
     $("#importButton").on("click", function () {
       Game.importSave(importField.value);
     });
@@ -17389,6 +17394,10 @@
     });
 
     var exportField = byId("exportField");
+
+    $("#saveButton").on("click", function () {
+      localStorage.setItem("CookieClickerGame", exportField.value);
+    });
 
     $("#exportSaveFile").on("click", function () {
       var filename = Game.bakeryName.replace(/[^a-zA-Z0-9]+/g, "") + "Bakery";
