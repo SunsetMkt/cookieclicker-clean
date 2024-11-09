@@ -9489,7 +9489,7 @@ Game.Launch = function () {
             : "") +
           /*(App?Game.WriteSlider('wubMusicSlider',loc("Wub"),'[$]%',function(){return 100;},'Game.setWubMusic(Math.round(l(\'wubMusicSlider\').value));l(\'wubMusicSliderRightText\').innerHTML=(Math.round(l(\'wubMusicSlider\').value))+\'%\';'):'')+*/
           "<br>" +
-          (Music
+          (App
             ? Game.WritePrefButton(
                 "bgMusic",
                 "bgMusicButton",
